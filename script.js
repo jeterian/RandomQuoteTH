@@ -90,14 +90,28 @@ var quotes = [
 // function for random number generator for both quotes and backgrounds
 
 function getRandomNum() {
-  var randInt = Math.floor(Math.random() * 10);
+  var randInt = Math.floor(Math.random() * quotes.length);
 }
 
 // create function named getRandomQuote() which will select a random quote from the above array
 
 function getRandomQuote() {
-  var getQuote = document.write(quotes[getRandomNum()]);
+  var num = getRandomNum();
+  var selectedQuote = quotes[num];
+  console.log(selectedQuote);
+  return selectedQuote;
 }
+
+// print the selected quote to the screen
+function printQuote() {
+  var selQuote = getRandomQuote();
+  document.getElementById('quote-box').innerHTML =
+  '<p class="quote">' + selQuote.quote + '</p>' +
+  '<p class="source">' + selQuote.source + '</p>' +
+  '<span class="citation">' + selQuote.citation + '</span>' +
+  '<span class="year">' + selQuote.year + '</span>'
+}
+
 
 // Collection of background images to randomly select each time the quote changes
 
