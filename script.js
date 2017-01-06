@@ -67,6 +67,14 @@ var quotes = [
     tags: "progress, science, vision"}
 ]
 
+// function for random number generator for both quotes and backgrounds
+
+function getRandomNum() {
+  
+}
+
 // create function named getRandomQuote() which will select a random quote from the above array
 
-function getRandomQuote
+function getRandomQuote() {
+
+}
