@@ -2,6 +2,7 @@
 // when user clicks anywhere on the button, the "printQuote" function is called
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
+// array of JS objects for the individual quotes and the various pieces of information
 var quotes = [
   {
     quote: “What I say is, a town isn’t a town without a bookstore. It may call
@@ -65,3 +66,7 @@ var quotes = [
     year: 1950,
     tags: "progress, science, vision"}
 ]
+
+// create function named getRandomQuote() which will select a random quote from the above array
+
+function getRandomQuote
