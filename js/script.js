@@ -79,6 +79,7 @@ if (quotes.length === 0) {
 }
 
 	var randomNumber = Math.floor(Math.random() * quotes.length);
+	console.log(quotes.length);
 	var selectedQuote = quotes[randomNumber];
 
 // Makes sure every quote is used once
