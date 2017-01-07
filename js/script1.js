@@ -66,13 +66,14 @@ var quotes = [
   }
 ];
 
-// array to store quotes that have been shown --- try uding this to show the quotes
+// array to store quotes that have been shown --- try using this to show the quotes
 var shownQuo = [];
 
 // function for random number generator for both quotes and backgrounds
 
 function getRandomNum() {
   var randInt = Math.floor(Math.random() * quotes.length);
+  console.log(quotes.length);
 }
 
 // create function named getRandomQuote() which will select a random quote from the above array
