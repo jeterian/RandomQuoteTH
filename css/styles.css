@@ -2,7 +2,7 @@ body {
   /*text-align: center;*/
   background-color: #36b55c;
   color: white;
-  font-family: 'Bookman', serif;
+  font-family: 'Garamond', serif;
 }
 #quote-box {
   position: absolute;
@@ -55,13 +55,6 @@ body {
 .year:before {
   content: ", ";
   font-style: normal;
-}
-
-.tags {
-  font-style: underline;
-}
-.tags:before {
-  font-style: small;
 }
 
 #loadQuote {
