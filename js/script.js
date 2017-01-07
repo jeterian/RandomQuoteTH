@@ -5,8 +5,7 @@ document.getElementById('loadQuote').addEventListener("click", printQuote, false
 // array of JS objects for the individual quotes and the various pieces of information
 var quotes = [
   {
-    quote: “What I say is, a town isn’t a town without a bookstore. It may call
-    itself a town, but unless it’s got a bookstore, it knows it’s not foolin’ a soul.”,
+    quote: "What I say is, a town isn’t a town without a bookstore. It may call itself a town, but unless it’s got a bookstore, it knows it’s not foolin’ a soul.",
     source: "Neil Gaiman",
     citation: "American Gods",
     year: 2001,
@@ -104,12 +103,12 @@ function getRandomQuote() {
 
 // print the selected quote to the screen
 function printQuote() {
-  var selQuote = getRandomQuote();
-  document.getElementById('quote-box').innerHTML =
-  '<p class="quote">' + selQuote.quote + '</p>' +
-  '<p class="source">' + selQuote.source + '</p>' +
-  '<span class="citation">' + selQuote.citation + '</span>' +
-  '<span class="year">' + selQuote.year + '</span>'
+  var randQuo = {};
+  randQuo = getRandomQuote ();
+  console.log(randQuo);
+	var output = '<p class ="quote">' + randQuo.quote  + '</p>' + '<p class ="source">' + randQuo.source + '</p>' +
+     '<span class="citation">' + randQuo.citation + '</span>'+ '<span class="year">' + randQuo.year + '</span>' + '<span class="tags">' + randQuo.tags + '</span>';
+  document.getElementById('quote-box').innerHTML = output;
 }
 
 
