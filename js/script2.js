@@ -2,7 +2,8 @@
 // when user clicks anywhere on the button, the "printQuote" function is called
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
-// array of JS objects for the individual quotes and the various pieces of information
+// Quotes to be randomly generated
+
 var quotes = [
   {
     quote: "What I say is, a town isn’t a town without a bookstore. It may call itself a town, but unless it’s got a bookstore, it knows it’s not foolin’ a soul.",
@@ -66,39 +67,68 @@ var quotes = [
   }
 ];
 
-// array to store quotes that have been shown --- try using this to show the quotes
-var shownQuo = [];
+// variable to store used quotes
+var usedQuotes = [];
 
-// function for random number generator for both quotes and backgrounds
+// Pulls a random quote to be displayed
+function getRandomQuote () {
 
-function getRandomNum() {
-  var randInt = Math.floor(Math.random() * quotes.length);
-  console.log(quotes.length);
+if (quotes.length === 0) {
+	quotes = usedQuotes;
+	usedQuotes = [];
 }
 
-// create function named getRandomQuote() which will select a random quote from the above array
+	var randomNumber = Math.floor(Math.random() * quotes.length);
+	var selectedQuote = quotes[randomNumber];
 
-function getRandomQuote() {
-  var num = getRandomNum();
-  var selectedQuote = quotes[num];
-  console.log(selectedQuote);
-  return selectedQuote;
-}
+// Makes sure every quote is used once
+	quotes.splice(randomNumber,1);
+	usedQuotes.push(selectedQuote);
+	console.log(selectedQuote);
+  console.log(usedQuotes);
 
-// print the selected quote to the screen
-function printQuote() {
-  var randQuo = getRandomQuote ();
-  console.log(randQuo);
-	var output = '<p class ="quote">' + randQuo.quote  + '</p>' + '<p class ="source">' + randQuo.source + '</p>' +
-     '<span class="citation">' + randQuo.citation + '</span>'+ '<span class="year">' + randQuo.year + '</span>' + '<span class="tags">' + randQuo.tags + '</span>';
-  document.getElementById('quote-box').innerHTML = output;
+//returns selected quote
+	return selectedQuote;
 }
 
 
-// Collection of background images to randomly select each time the quote changes
 
-var backgroundImgs = ['img/boatwake.jpg', 'img/littleskellig.jpg', 'img/littleskellig2.jpg',
-                      'img/palmtree.jpg', 'portmagee.jpg', 'img/portmagee2.jpg', 'img/skelligmichael.jpg',
-                      'img/skelligmichael2.jpg', 'img/skelligmichaelstairs.jpg', 'img/valencia.jpg']
 
-// function to randomly select background image
+// Displays Availible Properties of the choosen quote
+
+function printQuote () {
+	var postedQuote = getRandomQuote ();
+	var info =  "";
+
+	  info += '<p class ="quote">' + postedQuote.quote  + '</p>';
+	  info += '<p class ="source">' + postedQuote.source; '</p>';
+
+
+      	//posts citation and year only if applicable
+
+      	if (typeof postedQuote.citation != 'undefined'){
+      	info += '<span class="citation">' + postedQuote.citation + '</span>';
+ 		 }
+ 		 if(typeof postedQuote.year != 'undefined'){
+	  	info += '<span class ="year">' + postedQuote.year  + '</span>';
+		 }
+
+  		// Writes the final quote to the page
+  		document.getElementById('quote-box').innerHTML = info;
+}
+
+// Change random background color of the page
+
+function randomColor() {
+    var hash = '#';
+    var colors = ['000000','FF0000','00FF00','0000FF','FFFF00','00FFFF','FF00FF','C0C0C0','FF69B4'];
+    hash += colors[Math.floor(Math.random() * colors.length)];
+    document.getElementById('bg').style.background = hash;
+}
+
+document.getElementById('loadQuote').addEventListener("click",randomColor, false);
+
+
+// Changes the Quote and random color every thirty seconds
+	var quoteChange = window.setInterval(printQuote, 30000);
+	var colorChange = window.setInterval(randomColor, 30000);
