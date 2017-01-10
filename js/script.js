@@ -2,6 +2,7 @@
 // when user clicks anywhere on the button, the "printQuote" function is called
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
+
 // array of JS objects for the individual quotes and the various pieces of information
 var quotes = [
   {
@@ -124,3 +125,16 @@ function printQuote() {
   }
   document.getElementById('quote-box').innerHTML = output;
   }
+
+  function randomBackground() {
+      var hash = '#';
+      var color = ['0000FF','5F9EA0','DC143C','008B8B','8B0000','483D8B','228B22','FF69B4','4B0082', 'ADD8E6', '191970'];
+      hash += color[Math.floor(Math.random() * color.length)];
+      document.getElementById('background').style.background = hash;
+  }
+
+  document.getElementById('loadQuote').addEventListener("click",randomBackground, false);
+
+  // Changes the quote and background after a certain amount of time passes
+	var newQuote = window.setInterval(printQuote, 15000);
+	var newBG = window.setInterval(randomBackground, 15000);
