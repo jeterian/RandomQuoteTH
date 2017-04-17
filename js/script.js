@@ -144,5 +144,5 @@ function printQuote() {
   document.getElementById('loadQuote').addEventListener("click",randomBackground, false);
 
   // Changes the quote and background after a certain amount of time passes
-	var newQuote = window.setInterval(printQuote, 15000);
-	var newBG = window.setInterval(randomBackground, 15000);
+  var newQuote = window.setInterval(printQuote, 15000);
+  var newBG = window.setInterval(randomBackground, 15000);
