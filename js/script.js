@@ -99,7 +99,14 @@ function getRandomQuote() {
 
 // checks to see if there are quotes to be used still - if not, resets
   if (quotes.length === 0) {
-    quotes = shownQuo;
+    quotes = shownQuo +  {
+    quote: "No motive is pure. No one is good or bad-but a hearty mix of both. And sometimes life actually gives to you by taking away.",
+    source: "Carrie Fisher",
+    citation: "Wishful Drinking",
+    year: 2008,
+    tags: "Humor, Life, Good and Evil",
+    link: "https://www.goodreads.com/quotes/448220-no-motive-is-pure-no-one-is-good-or-bad-but"
+  };
     shownQuo = [];
   }
 
@@ -118,18 +125,18 @@ function printQuote() {
   var output = "";
 
 //output quote and source
-  output += '<p class ="quote">' + randQuo.quote  + '</p>'
+  output += '<p class ="quote">' + randQuo.quote  + '</p>';
   output += '<p class ="source">' + randQuo.source + '</p>';
 
   //output citation, year, and tags if they are included
-  if(typeof randQuo.citiation != 'undefined'){
-    output += '<span class="citation">' + randQuo.citation
+  if(typeof randQuo.citation != 'undefined'){
+    output += '<span class="citation"><a href=' + randQuo.link + '>' + randQuo.citation + '</a>';
   }
   if(typeof randQuo.year != 'undefined'){
-    output += '</span>'+ '<span class="year">' + randQuo.year + '</span>'
+    output += '</span>'+ '<span class="year">' + randQuo.year + '</span>';
   }
   if(typeof randQuo.tags != 'undefined'){
-    output += '<span class="tags">' + randQuo.tags + '</span>';
+    output += '<p><span class="tags">' + randQuo.tags + '</span></p>';
   }
   document.getElementById('quote-box').innerHTML = output;
   }
@@ -144,5 +151,5 @@ function printQuote() {
   document.getElementById('loadQuote').addEventListener("click",randomBackground, false);
 
   // Changes the quote and background after a certain amount of time passes
-  var newQuote = window.setInterval(printQuote, 15000);
-  var newBG = window.setInterval(randomBackground, 15000);
+  //var newQuote = window.setInterval(printQuote, 15000);
+  //var newBG = window.setInterval(randomBackground, 15000);
