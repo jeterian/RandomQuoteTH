@@ -1,9 +1,3 @@
-// event listener to respond to "Show another quote" button clicks
-// when user clicks anywhere on the button, the "printQuote" function is called
-document.getElementById('loadQuote').addEventListener("click", printQuote, false);
-
-
-// array of JS objects for the individual quotes and the various pieces of information
 // Array of quotes to display
 
 var quotes = [
@@ -87,65 +81,3 @@ var quotes = [
     tags: "progress, work, vision",
     link: "https://en.wikiquote.org/wiki/Alan_Turing"
   }];
-
-// array to store quotes that have been shown
-var shownQuo = [];
-
-
-
-// create function named getRandomQuote() which will select a random quote from the above array
-
-function getRandomQuote() {
-
-  // random number generator for quotes
-  var randInt = Math.floor(Math.random() * quotes.length);
-
-// checks to see if there are quotes to be used still - if not, resets
-  if (quotes.length === 0) {
-    quotes = shownQuo;
-    shownQuo = [];
-  }
-
-// receives random quote and logs it in the console
-  var selQuote = quotes[randInt];
-  quotes.splice(randInt, 1);
-  shownQuo.push(selQuote);
-  console.log(selQuote);
-  return selQuote;
-}
-
-// print the selected quote to the screen
-function printQuote() {
-  var randQuo = getRandomQuote();
-  console.log(randQuo);
-  var output = "";
-
-//output quote and source
-  output += '<p class ="quote">' + randQuo.quote  + '</p>'
-  output += '<p class ="source">' + randQuo.source + '</p>';
-
-  //output citation, year, and tags if they are included
-  if(typeof randQuo.citiation != 'undefined'){
-    output += '<span class="citation">' + randQuo.citation
-  }
-  if(typeof randQuo.year != 'undefined'){
-    output += '</span>'+ '<span class="year">' + randQuo.year + '</span>'
-  }
-  if(typeof randQuo.tags != 'undefined'){
-    output += '<span class="tags">' + randQuo.tags + '</span>';
-  }
-  document.getElementById('quote-box').innerHTML = output;
-  }
-
-  function randomBackground() {
-      var hash = '#';
-      var color = ['0000FF','5F9EA0','DC143C','008B8B','8B0000','483D8B','228B22','FF69B4','4B0082', 'ADD8E6', '191970'];
-      hash += color[Math.floor(Math.random() * color.length)];
-      document.getElementById('background').style.background = hash;
-  }
-
-  document.getElementById('loadQuote').addEventListener("click",randomBackground, false);
-
-  // Changes the quote and background after a certain amount of time passes
-	var newQuote = window.setInterval(printQuote, 15000);
-	var newBG = window.setInterval(randomBackground, 15000);
