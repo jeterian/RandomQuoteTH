@@ -98,15 +98,8 @@ function getRandomQuote() {
   var randInt = Math.floor(Math.random() * quotes.length);
 
 // checks to see if there are quotes to be used still - if not, resets
-  if (quotes.length === 0) {
-    quotes = shownQuo +  {
-    quote: "No motive is pure. No one is good or bad-but a hearty mix of both. And sometimes life actually gives to you by taking away.",
-    source: "Carrie Fisher",
-    citation: "Wishful Drinking",
-    year: 2008,
-    tags: "Humor, Life, Good and Evil",
-    link: "https://www.goodreads.com/quotes/448220-no-motive-is-pure-no-one-is-good-or-bad-but"
-  };
+ if (quotes.length === 0) {
+    quotes = shownQuo;
     shownQuo = [];
   }
 
